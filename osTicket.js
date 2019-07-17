@@ -6,61 +6,72 @@ var closeButton;
 const url = 'http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?status=open&p=';
 var index = 0;
 const Iframe = document.createElement("iframe");
+var errorTolerance = 5;
+var errorCount = 0;
 document.documentElement.appendChild(Iframe);
-
-
-Iframe.onload = () => {
-    try {
-        //closeButton = Iframe.contentDocument.querySelectorAll(".no-pjax.ticket-action")[4].click()
-    } catch (error) {
-
-    }
-
-}
+let ticketText = "";
 
 function pageProcess() {
-    console.log("pageProcess");
-    pageProcessGetLength();
-    console.log(index)
-    
-}
-
-async function pageProcessGetLength() {
     Iframe.onload = () => {
-        console.log("pageProcess onload");
         _pageLength = Iframe.contentDocument.querySelectorAll("table.list tbody tr").length;
-        console.log(_pageLength);
-    }
-    await pageProcessIn();
-    return _pageLength;
+        return new Promise((resolve, reject) => {
+            pageProcessIn();
+        });
+    };
 }
-async function pageProcessIn(){
-    for (index = 0; index < _pageLength; index++) {
-        console.log(index);
-        Iframe.contentDocument.querySelectorAll("form tbody tr")[index].click();
-        console.log("click");
+
+function pageProcessIn() {
+    var tickets = Iframe.contentDocument.querySelectorAll("form tbody tr a.preview");
+    for (index = 0; index < 6; index++) {
+        Iframe.src = tickets[index].href;
+        Iframe.onload = () => {
+            ticketText = Iframe.contentDocument.querySelector(".thread-body.no-pjax div div").innerText.trim();
+            callTicket();
+        };
+    }
+    currentPage++;
+}
+function callTicket() {
+    console.log("call");
+    return new Promise((resolve, reject) => {
         ticketProcess();
+        console.log("promise");
+    });
+}
+async function ticketProcess() {
+    var lineCount = ticketText.split("/\r\n|\r|\n/").length;
+    var ticketTextSplit = ticketText.split("\n");
+
+    if(lineCount == 1) return;
+
+    if (ticketTextSplit[0] == "" || ticketTextSplit[0] == "\n" || ticketTextSplit[3][0] == "v" || ticketTextSplit[4][0] == "L" || ticketTextSplit[5][0] == "I") {
+        index--;
+        _closedTicketCount++;
+        console.log(ticketText);
+        return new Promise((resolve, reject) => {
+            closeTicket();
+        });
+    }
+    else {
+        console.log("back");
+        Iframe.src = url + currentPage; //bı oncekı sayfaya gerı donuyor
+        Iframe.onload = () => {
+            console.log("waiting...")
+            return;
+        };
     }
 }
 
-function ticketProcess() {
-    Iframe.onload = () => {
-        var ticketText = Iframe.contentDocument.querySelector(".thread-body.no-pjax div div").innerText;
-        var ticketTextSplit = ticketText.split("\n");
-        if (ticketTextSplit[0] == "" || ticketTextSplit[3][0] == "v" || ticketTextSplit[4][0] == "L" || ticketTextSplit[5][0] == "I") {
-            index--;
-            _closedTicketCount++;
-        }
-        else {
-            Iframe.contentWindow.history.back(); //bı oncekı sayfaya gerı donuyor
-        }
-    }
+function closeTicket() {
+    document.querySelectorAll("a.no-pjax.ticket-action")[4].click();
+    setTimeout(() => {
+        document.querySelector("div#ticket-status form span.buttons input[type='submit']").click();
+    }, 2000);
 }
+
 function LoadFrame() {
-    return new Promise(R => {
-        Iframe.src = url + currentPage++;
-        pageProcess();
-    });
+    Iframe.src = url + currentPage;
+    pageProcess();
 }
 
 async function Main() {
