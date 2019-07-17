@@ -1,0 +1,69 @@
+### RATING
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=94818
+
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=94799
+
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=94781
+
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=94752
+
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=94751
+
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=94763
+
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=94735
+
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=94715
+
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=94674
+
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=94586
+
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=96356
+
+### In-App Purchases
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=94733
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=96374 // pro uyelik iptali 
+
+### Privacy issue:
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=94504
+
+### Daily Reward(Wheel Spin)
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=96380
+
+### Language Problems
+--Russian
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=96447
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=96434 // Zor kelimeler
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=96391 // kazak dilindeki kelimelerin de rusca ya girmesi
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=96373
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=96406
+
+
+
+
+
+
+
+--Spanish
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=94716 
+
+--Portekizce 
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=96370
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=96357
+
+--Ukrainian
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=96423 // Burada ne gezdiği belli değil, örneğin Mısır'da Mısır ile ilgiliyse tematik sözcüklerin kaldırılmasına değebilir.
+
+
+--Hungarian
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=96411 // Dilsel tutarsızlık yaygın
+
+--Arabic
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=96404
+
+--German
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=96332
+
+### Suggestions
+http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?id=96370
