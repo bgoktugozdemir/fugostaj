@@ -6,7 +6,7 @@ var closeButton;
 const url = 'http://89.19.9.78/fugosftp/osticket/upload/scp/tickets.php?status=open&p=';
 var index = 0;
 const Iframe = document.createElement("iframe");
-var errorTolerance = 5;
+var errorTolerance  = 5;
 var errorCount = 0;
 document.documentElement.appendChild(Iframe);
 let ticketText = "";
@@ -39,11 +39,14 @@ function callTicket() {
     });
 }
 async function ticketProcess() {
-    var lineCount = ticketText.split("/\r\n|\r|\n/").length;
     var ticketTextSplit = ticketText.split("\n");
 
-    if(lineCount == 1) return;
-
+    if(ticketText == "") {
+        filterNone();
+    }
+    if(checkVLI){
+        filterVLI();
+    }
     if (ticketTextSplit[0] == "" || ticketTextSplit[0] == "\n" || ticketTextSplit[3][0] == "v" || ticketTextSplit[4][0] == "L" || ticketTextSplit[5][0] == "I") {
         index--;
         _closedTicketCount++;
@@ -54,7 +57,7 @@ async function ticketProcess() {
     }
     else {
         console.log("back");
-        Iframe.src = url + currentPage; //bı oncekı sayfaya gerı donuyor
+        Iframe.src = url + currentPage;
         Iframe.onload = () => {
             console.log("waiting...")
             return;
@@ -68,10 +71,28 @@ function closeTicket() {
         document.querySelector("div#ticket-status form span.buttons input[type='submit']").click();
     }, 2000);
 }
-
+function checkVLI() {
+    for(var x = 0; x < ticketTextSplit.length-2; x++) {
+        if(ticketTextSplit[x][0] == "v" && x == 3) {
+            if(ticketTextSplit[x + 1][0] == "L") {
+                if(ticketTextSplit[x + 2][0] == "I") {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+    return false;
+}
 function LoadFrame() {
     Iframe.src = url + currentPage;
     pageProcess();
+}
+function filterVLI() {
+
+}
+function filterNone() {
+
 }
 
 async function Main() {
