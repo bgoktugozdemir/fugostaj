@@ -44,7 +44,7 @@ async function ticketProcess() {
     if(ticketText == "") {
         filterNone();
     }
-    if(checkVLI){
+    if(checkVLI()){
         filterVLI();
     }
     if (ticketTextSplit[0] == "" || ticketTextSplit[0] == "\n" || ticketTextSplit[3][0] == "v" || ticketTextSplit[4][0] == "L" || ticketTextSplit[5][0] == "I") {
@@ -77,6 +77,8 @@ function checkVLI() {
             if(ticketTextSplit[x + 1][0] == "L") {
                 if(ticketTextSplit[x + 2][0] == "I") {
                     return true;
+                    filterVLI(y);
+
                 }
             }
             return false;
@@ -89,10 +91,18 @@ function LoadFrame() {
     pageProcess();
 }
 function filterVLI() {
-
+    if(ticketTextSplit[6][0] == "F" && ticketTextSplit[6][1] == "B") { //VlI dan sonrasi bossa
+       if(ticketTextSplit[7] == "") {
+           closeTicket();
+       }
+    } else if (ticketTextSplit[6] == "") {
+        closeTicket();
+    }
 }
 function filterNone() {
-
+    if(ticketTextSplit[0] == "") {
+        closeTicket();
+    }
 }
 
 async function Main() {
